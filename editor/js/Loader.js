@@ -70,7 +70,7 @@ function Loader( editor ) {
 		var reader = new FileReader();
 		reader.addEventListener( 'progress', function ( event ) {
 
-			var size = '(' + Math.floor( event.total / 1000 ).format() + ' KB)';
+			var size = '(' + Math.floor( event.total / 1000 ) + ' KB)';
 			var progress = Math.floor( ( event.loaded / event.total ) * 100 ) + '%';
 
 			console.log( 'Loading', filename, size, progress );
