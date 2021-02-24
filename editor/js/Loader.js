@@ -3,7 +3,6 @@ import * as THREE from 'three';
 import { TGALoader } from '../../examples/jsm/loaders/TGALoader.js';
 
 import { AddObjectCommand } from './commands/AddObjectCommand.js';
-import { SetSceneCommand } from './commands/SetSceneCommand.js';
 
 import { LoaderUtils } from './LoaderUtils.js';
 
@@ -564,23 +563,6 @@ function Loader( editor ) {
 
 				break;
 
-			case 'wrl':
-
-				reader.addEventListener( 'load', async function ( event ) {
-
-					var contents = event.target.result;
-
-					var { VRMLLoader } = await import( '../../examples/jsm/loaders/VRMLLoader.js' );
-
-					var result = new VRMLLoader().parse( contents );
-
-					editor.execute( new SetSceneCommand( editor, result ) );
-
-				}, false );
-				reader.readAsText( file );
-
-				break;
-
 			case 'xyz':
 
 				reader.addEventListener( 'load', async function ( event ) {
@@ -672,8 +654,6 @@ function Loader( editor ) {
 				loader.parse( data, function ( result ) {
 
 					if ( result.isScene ) {
-
-						editor.execute( new SetSceneCommand( editor, result ) );
 
 					} else {
 
