@@ -13,7 +13,7 @@ import {
 	LoaderUtils,
 	Points,
 	PointsMaterial
-} from "../../../build/three.module.js";
+} from "three";
 
 var PCDLoader = function ( manager ) {
 
