@@ -1886,6 +1886,9 @@ var GLTFLoader = ( function () {
 	 * @return {Promise<THREE.Texture>}
 	 */
 	GLTFParser.prototype.loadTexture = function ( textureIndex ) {
+    if (GLTFLoader.ignoreTextures) {
+      return Promise.resolve(null);
+    }
 
 		var parser = this;
 		var json = this.json;
@@ -1995,6 +1998,10 @@ var GLTFLoader = ( function () {
 		var parser = this;
 
 		return this.getDependency( 'texture', mapDef.index ).then( function ( texture ) {
+
+      if (!texture) {
+        return;
+      }
 
 			if ( ! texture.isCompressedTexture ) {
 
