@@ -21,7 +21,6 @@ import { VTKLoader } from '../../examples/jsm/loaders/VTKLoader.js';
 import { VRMLLoader } from '../../examples/jsm/loaders/VRMLLoader.js';
 
 import { AddObjectCommand } from './commands/AddObjectCommand.js';
-import { SetSceneCommand } from './commands/SetSceneCommand.js';
 
 import { LoaderUtils } from './LoaderUtils.js';
 
@@ -470,21 +469,6 @@ var Loader = function ( editor ) {
 					mesh.name = filename;
 
 					editor.execute( new AddObjectCommand( editor, mesh ) );
-
-				}, false );
-				reader.readAsText( file );
-
-				break;
-
-			case 'wrl':
-
-				reader.addEventListener( 'load', function ( event ) {
-
-					var contents = event.target.result;
-
-					var result = new VRMLLoader().parse( contents );
-
-					editor.execute( new SetSceneCommand( editor, result ) );
 
 				}, false );
 				reader.readAsText( file );
