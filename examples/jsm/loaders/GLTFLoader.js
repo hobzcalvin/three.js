@@ -527,6 +527,9 @@ var GLTFLoader = ( function () {
 	};
 
 	GLTFLightsExtension.prototype.createNodeAttachment = function ( nodeIndex ) {
+    if (GLTFLoader.ignoreTextures) {
+      return null;
+    }
 
 		var self = this;
 		var parser = this.parser;
@@ -2448,6 +2451,9 @@ var GLTFLoader = ( function () {
 	};
 
 	GLTFParser.prototype.loadTextureImage = function ( textureIndex, source, loader ) {
+    if (GLTFLoader.ignoreTextures) {
+      return Promise.resolve(null);
+    }
 
 		var parser = this;
 		var json = this.json;
